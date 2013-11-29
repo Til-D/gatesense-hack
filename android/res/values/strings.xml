@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">gatesense-hack</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <string name="transportation_heading">Mode of transportation:</string>
+    <string name="bike">Bike</string>
+    <string name="walk">Walk</string>
+    <string name="bus">Bus</string>
+    <string name="rail">Rail</string>
+    <string name="taxi">Taxi</string>
+    <string name="plane">Plane</string>
+    
+    <string name="go">Record!</string>
+    <string name="stop">Stop</string>
+    <string name="recording">recording</string>
+    <string name="ready">ready</string>
+    <string name="noTransportationModeSelected">Select a transportation mode!</string>
+
+</resources>

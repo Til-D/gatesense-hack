@@ -18,8 +18,18 @@ public class HomeActivity extends Activity {
 	
 	private ToggleButton buttonRecordTransportation;
 	private RadioGroup radioGroupTransportation;
+	
 	private TextView homeStatusLabel;
-	private Boolean recording;
+	private TextView labelLongitude;
+	private TextView labelLatitude;
+	private TextView labelAltitude;
+	private TextView labelAccX;
+	private TextView labelAccY;
+	private TextView labelAccZ;
+	
+	private boolean recording;
+	private AccelerometerSensor accelerometerSensor;
+	private LocationSensor locationSensor;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +38,28 @@ public class HomeActivity extends Activity {
 		
 		//UI Elements
 		homeStatusLabel = (TextView) findViewById(R.id.homeStatusLabel);
+		labelLongitude = (TextView) findViewById(R.id.labelLong);
+		labelLatitude = (TextView) findViewById(R.id.labelLat);
+		labelAltitude = (TextView) findViewById(R.id.labelAlt);
+		labelAccX = (TextView) findViewById(R.id.labelAccX);
+		labelAccY = (TextView) findViewById(R.id.labelAccY);
+		labelAccZ = (TextView) findViewById(R.id.labelAccZ);
+		
 		buttonRecordTransportation = (ToggleButton) findViewById(R.id.toggleButtonTransportationGo);
 		radioGroupTransportation = (RadioGroup) findViewById(R.id.radioTransportation);
 		
 		//initializers
 		recording = false;
 		homeStatusLabel.setText(getString(R.string.ready));
+		labelLongitude.setText("");
+		labelLatitude.setText("");
+		labelAltitude.setText("");
+		labelAccX.setText("");
+		labelAccY.setText("");
+		labelAccZ.setText("");
+		
+		accelerometerSensor = new AccelerometerSensor();
+		locationSensor = new LocationSensor();
 		
 		//Listeners
 		buttonRecordTransportation.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -62,24 +88,36 @@ public class HomeActivity extends Activity {
 		    
 		    Log.i(TAG, "selected mode: " + selectedTransport);
 		    
-			if (selectedTransport.equals(getString(R.string.walk))) {
-	    	
-	    	}
-			else if (selectedTransport.equals(getString(R.string.bike))) {
-			
-			}
-			else if (selectedTransport.equals(getString(R.string.bus))) {
-				
-			}
-			else if (selectedTransport.equals(getString(R.string.rail))) {
-				
-			}
-			else if (selectedTransport.equals(getString(R.string.taxi))) {
-				
-			}
-			else {
-				//default
-			}
+		    if(accelerometerSensor.isAvailable(HomeActivity.this)) {
+		    	accelerometerSensor.start(HomeActivity.this);
+		    } else {
+		    	Log.w(TAG, "Accelerometer not available.");
+		    }
+		    
+		    if(locationSensor.isAvailable(HomeActivity.this)) {
+		    	locationSensor.start(HomeActivity.this);
+		    } else {
+		    	Log.w(TAG, "Location sensor not available.");
+		    }
+		    
+//			if (selectedTransport.equals(getString(R.string.walk))) {
+//	    	
+//	    	}
+//			else if (selectedTransport.equals(getString(R.string.bike))) {
+//			
+//			}
+//			else if (selectedTransport.equals(getString(R.string.bus))) {
+//				
+//			}
+//			else if (selectedTransport.equals(getString(R.string.rail))) {
+//				
+//			}
+//			else if (selectedTransport.equals(getString(R.string.taxi))) {
+//				
+//			}
+//			else {
+//				//default
+//			}
 			
 			recording = true;
 			homeStatusLabel.setText(getString(R.string.recording));
@@ -95,6 +133,8 @@ public class HomeActivity extends Activity {
 	protected void stopRecordingTransportation() {
     	Log.i(TAG, "- stop recording mode of transport");
     	
+    	accelerometerSensor.stop();
+    	
 		recording = false;
 		homeStatusLabel.setText(getString(R.string.ready));
 		
@@ -102,7 +142,7 @@ public class HomeActivity extends Activity {
 		enableRadioGroupTransportation(!recording);
 	}
 	
-	private void enableRadioGroupTransportation (Boolean enabled) {
+	private void enableRadioGroupTransportation (boolean enabled) {
 		for(int i = 0; i < radioGroupTransportation.getChildCount(); i++){
             ((RadioButton)radioGroupTransportation.getChildAt(i)).setEnabled(enabled);
         }

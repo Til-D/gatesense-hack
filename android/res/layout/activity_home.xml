@@ -12,67 +12,131 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/transportation_heading" />
-    
+
     <RadioGroup
         android:id="@+id/radioTransportation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" >
 
-    <RadioButton
-        android:id="@+id/radioButtonWalk"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="@string/walk" />
+        <RadioButton
+            android:id="@+id/radioButtonWalk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="@string/walk" />
 
-    <RadioButton
-        android:id="@+id/radioButtonBike"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/bike" />
+        <RadioButton
+            android:id="@+id/radioButtonTaxi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/taxi" />
 
-    <RadioButton
-        android:id="@+id/radioButtonBus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/bus" />
+        <RadioButton
+            android:id="@+id/radioButtonRail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/rail" />
 
-    <RadioButton
-        android:id="@+id/radioButtonRail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/rail" />
-    
-    <RadioButton
-        android:id="@+id/radioButtonTaxi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/taxi" />
-    
+        <RadioButton
+            android:id="@+id/radioButtonBus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/bus" />
+
+        <RadioButton
+            android:id="@+id/radioButtonBike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/bike" />
     </RadioGroup>
-
-    <ToggleButton
-        android:id="@+id/toggleButtonTransportationGo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="34dp"
-        android:textOff="@string/go"
-    	android:textOn="@string/stop" />
 
     <TextView
         android:id="@+id/homeStatusLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/radioTransportation"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignRight="@+id/toggleButtonTransportationGo"
+        android:layout_below="@+id/toggleButtonTransportationGo"
         android:text="status label"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/labelLong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/toggleButtonTransportationGo"
+        android:layout_below="@+id/homeStatusLabel"
+        android:text="@string/longitude"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/labelLat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/toggleButtonTransportationGo"
+        android:layout_below="@+id/labelLong"
+        android:text="@string/latitude"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_marginTop="5dp"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/labelAlt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/toggleButtonTransportationGo"
+        android:layout_below="@+id/labelLat"
+        android:text="@string/altitude"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_marginTop="5dp"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/labelAccX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/toggleButtonTransportationGo"
+        android:layout_below="@+id/labelAlt"
+        android:text="@string/accelerometer_x"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_marginTop="5dp"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/labelAccY"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/toggleButtonTransportationGo"
+        android:layout_below="@+id/labelAccX"
+        android:text="@string/accelerometer_y"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_marginTop="5dp"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/labelAccZ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/toggleButtonTransportationGo"
+        android:layout_below="@+id/labelAccY"
+        android:text="@string/accelerometer_z"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_marginTop="5dp"
+        android:textSize="10sp" />
+
+    <ToggleButton
+        android:id="@+id/toggleButtonTransportationGo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/radioTransportation"
+        android:layout_below="@+id/radioTransportation"
+        android:layout_marginTop="16dp"
+        android:textOff="@string/go"
+        android:textOn="@string/stop" />
 
 </RelativeLayout>

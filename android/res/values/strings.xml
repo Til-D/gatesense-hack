@@ -18,5 +18,12 @@
     <string name="recording">recording</string>
     <string name="ready">ready</string>
     <string name="noTransportationModeSelected">Select a transportation mode!</string>
+    
+    <string name="longitude">Longitude: </string>
+    <string name="latitude">Latitude: </string>
+    <string name="altitude">Altitude: </string>
+    <string name="accelerometer_x">Accelerometer X: </string>
+    <string name="accelerometer_y">Accelerometer Y: </string>
+    <string name="accelerometer_z">Accelerometer Z: </string>
 
 </resources>
